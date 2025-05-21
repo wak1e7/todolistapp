@@ -69,7 +69,7 @@ public class TodoController {
         return ResponseEntity.ok(todoSvc.updateTodo(user.getUsername(), id, req));
     }
 
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("isAuthenticated()")
     @PatchMapping("/{id}")
     public ResponseEntity<TodoResponse> patchCompleted(
             @AuthenticationPrincipal UserDetails user,
